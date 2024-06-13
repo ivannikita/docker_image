@@ -21,7 +21,7 @@ pipeline {
             stage('push docker image') {
                 steps {
                     sh '''
-                    tag < echo ./tag
+                    tag = $(echo ./tag)
                     docker push ivannikita/netrology_diplom:$tag
                     '''
                     }
@@ -29,7 +29,7 @@ pipeline {
             stage('push to kuber') {
                 steps {
                     sh '''
-                    tag < echo ./tag
+                   tag = $(echo ./tag)
                     echo $tag
                     '''
                     }
