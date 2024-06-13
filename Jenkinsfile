@@ -18,13 +18,7 @@ pipeline {
                     }
 
                     }
-            stage('push docker image') {
-                steps {
-                    sh '''
-                    tag = $(cat ./tag)
-                    '''
-                    }
-    }
+
             stage('push to kuber') {
                 steps {
                     sh '''
