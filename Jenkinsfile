@@ -6,7 +6,8 @@ pipeline {
                     sh '''
                     hash=$(git rev-parse HEAD)
                     tag=$(git tag --contains $hash)
-                    if [ -z "${tag}" ]; then
+                    if [[ ! -z "${tag}" ]]
+                    then
                     echo $tag > ./tag
                     else
                     tag=$(git tag --sort=-creatordate | head -n 1)
@@ -29,6 +30,7 @@ pipeline {
                 steps {
                     sh '''
                     tag < ./tag
+                    echo $tag
                     '''
                     }
     }
