@@ -22,8 +22,6 @@ pipeline {
                 steps {
                     sh '''
                     tag = $(cat ./tag)
-
-                    echo $tag
                     '''
                     }
     }
@@ -38,5 +36,9 @@ pipeline {
 
 }
 
-
+    post {
+        always {
+        cleanWs()
+        }
+    }
     }
