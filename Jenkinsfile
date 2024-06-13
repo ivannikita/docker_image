@@ -22,9 +22,8 @@ pipeline {
                 steps {
                     sh '''
                     tag = $(cat ./tag)
-                    // name="ivannikita/netrology_diplom:$tag"
+
                     echo $tag
-                    // docker push $name
                     '''
                     }
     }
@@ -39,9 +38,5 @@ pipeline {
 
 }
 
-    // post {
-    //     always {
-    //     // cleanWs()
-    //     }
-    // }
+
     }
