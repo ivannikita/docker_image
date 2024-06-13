@@ -12,7 +12,7 @@ pipeline {
                     if [[ ! -z "${tag}" ]]
                     then
                     echo tag_absolute=true > env.property
-                    echo env.property
+                    echo ${env.property}
                     echo $tag > ./tag
                     else
                     tag=$(git tag --sort=-creatordate | head -n 1)
