@@ -1,5 +1,8 @@
 pipeline {
       agent any
+            environment {
+                 tag_absolute = false
+                }
         stages {
             stage('build docker image') {
                  steps {
@@ -8,6 +11,7 @@ pipeline {
                     tag=$(git tag --contains $hash)
                     if [[ ! -z "${tag}" ]]
                     then
+                    echo tag_absolute=true > env.property
                     echo $tag > ./tag
                     else
                     tag=$(git tag --sort=-creatordate | head -n 1)
@@ -28,9 +32,14 @@ pipeline {
                     }
     }
             stage('push to kuber') {
+                when {
+                   expression {
+                    return env.tag_absolute == true;
+                    }
+                }
                 steps {
                     sh '''
-                    tag=$(cat ./tag)
+                    tag=$(cat ./tag_absolute)
                     echo $tag
                     '''
                     }
