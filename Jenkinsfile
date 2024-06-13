@@ -11,7 +11,7 @@ pipeline {
                     tag=$(git tag --contains $hash)
                     if [[ ! -z "${tag}" ]]
                     then
-                    echo tag_absolute=true > env.property
+                    echo tag_absolute = true > env.property
 
                     echo $tag > ./tag
                     else
@@ -20,7 +20,6 @@ pipeline {
                     fi
                     docker build -t ivannikita/netrology_diplom:$tag .
                     '''
-                                       sh env
                     }
 
                     }
