@@ -1,0 +1,8 @@
+.photo-grid__item {
+  box-sizing: border-box;
+}
+@media screen and (max-width: 767px) {
+  .photo-grid__item {
+    height: 216px;
+  }
+}
