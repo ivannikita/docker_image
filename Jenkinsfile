@@ -4,10 +4,17 @@ pipeline {
             stage('build docker image') {
                  steps {
                     sh '''
-			echo "ok"
+                    docker build -t ivannikita/netrology_diplom:v0.4 .
                     '''
-                    }}
+                    }
+                 steps {
+                    sh '''
+                    docker push ivannikita/netrology_diplom:v0.4
+                    '''
+                    }
+                    }
     }
+
 
     post {
         always {
