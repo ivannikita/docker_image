@@ -12,7 +12,7 @@ pipeline {
                     if [[ ! -z "${tag}" ]]
                     then
                     echo tag_absolute=true > env.property
-                    echo ${env.property}
+
                     echo $tag > ./tag
                     else
                     tag=$(git tag --sort=-creatordate | head -n 1)
@@ -20,6 +20,7 @@ pipeline {
                     fi
                     docker build -t ivannikita/netrology_diplom:$tag .
                     '''
+                                        echo ${env.property}
                     }
 
                     }
