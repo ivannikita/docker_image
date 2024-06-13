@@ -29,7 +29,7 @@ pipeline {
             stage('push to kuber') {
                 steps {
                     sh '''
-                   tag = $(cat ./tag)
+                    tag=$(cat ./tag)
                     echo $tag
                     '''
                     }
