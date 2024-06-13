@@ -20,7 +20,7 @@ pipeline {
                     fi
                     docker build -t ivannikita/netrology_diplom:$tag .
                     '''
-                                        echo ${env.property}
+                                       sh env
                     }
 
                     }
