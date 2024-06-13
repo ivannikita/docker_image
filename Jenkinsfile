@@ -18,7 +18,15 @@ pipeline {
                     }
 
                     }
-
+            stage('push docker image') {
+                steps {
+                    sh '''
+                    tag=$(cat ./tag)
+                    echo $tag
+                    docker push ivannikita/netrology_diplom:$tag
+                    '''
+                    }
+    }
             stage('push to kuber') {
                 steps {
                     sh '''
@@ -32,7 +40,8 @@ pipeline {
 
     post {
         always {
-        cleanWs()
+        // cleanWs()
         }
     }
     }
+
