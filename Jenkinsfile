@@ -22,9 +22,7 @@ pipeline {
                 steps {
                     sh '''
                     tag = $(cat ./tag)
-                    name="ivannikita/netrology_diplom:$tag"
-                    echo $name
-                    #docker push $name
+                    echo $tag
                     '''
                     }
     }
