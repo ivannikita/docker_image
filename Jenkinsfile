@@ -25,11 +25,10 @@ pipeline {
                     '''
                     }
     }
-            stage('push docker image') {
+            stage('push to kuber') {
                 steps {
                     sh '''
                     tag < ./tag
-                    docker push ivannikita/netrology_diplom:$tag
                     '''
                     }
     }
