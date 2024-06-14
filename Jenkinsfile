@@ -19,7 +19,7 @@ pipeline {
                     echo $tag > ./tag
                     fi
                     docker build -t ivannikita/netrology_diplom:$tag .
-                    echo ${env.TAG_NAME}
+                    echo env.TAG_NAME
                     '''
                     }
 
@@ -35,9 +35,7 @@ pipeline {
     }
             stage('push to kuber') {
                 when {
-                   expression {
-                    return env.TAG_NAME != null
-                    }
+                    buildingTag()
                 }
                 steps {
                     sh '''
