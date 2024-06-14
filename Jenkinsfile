@@ -36,10 +36,12 @@ pipeline {
                     expression { return fileExists ('./build_approve') }
                 }
                 steps {
-                    git branch: 'main', credentialsId: '6487bf99-5ef7-4876-a3ae-fb89674817c4', url: 'https://github.com/ivannikita/docker_image.git'
+                    git branch: 'main', credentialsId: '6487bf99-5ef7-4876-a3ae-fb89674817c4', url: 'https://github.com/ivannikita/neto_diplom.git'
                     sh '''
                     tag=$(cat ./tag)
                     echo $tag
+                    sed -i 's/:v.*/:$tag/g' ./kuber_my/deployment_app.yaml
+                    kubectl apply -f ./kuber_my/deployment_app.yaml
                     '''
                     }
     }
