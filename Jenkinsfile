@@ -1,7 +1,7 @@
 pipeline {
       agent any
             environment {
-                 tag_absolute = false
+                 approve = fileExists './build_approve'
                 }
         stages {
             stage('build docker image') {
@@ -35,7 +35,7 @@ pipeline {
     }
             stage('push to kuber') {
                 when {
-                    expression { ./build_approve == 'true' }
+                    expression { approve == 'true' }
                 }
                 steps {
                     sh '''
