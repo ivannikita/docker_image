@@ -19,6 +19,7 @@ pipeline {
                     echo $tag > ./tag
                     fi
                     docker build -t ivannikita/netrology_diplom:$tag .
+                    echo ${env.TAG_NAME}
                     '''
                     }
 
@@ -40,7 +41,7 @@ pipeline {
                 }
                 steps {
                     sh '''
-                    echo ${TAG_NAME}
+                    echo ${env.TAG_NAME}
                     '''
                     }
     }
