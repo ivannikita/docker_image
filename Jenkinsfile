@@ -35,7 +35,7 @@ pipeline {
             stage('push to kuber') {
                 when {
                    expression {
-                    env.TAG_NAME != null
+                    return env.TAG_NAME != null
                     }
                 }
                 steps {
