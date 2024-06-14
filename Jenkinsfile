@@ -11,7 +11,7 @@ pipeline {
                     tag=$(git tag --contains $hash)
                     if [[ ! -z "${tag}" ]]
                     then
-                    touch build
+                    touch build_approve
 
                     echo $tag > ./tag
                     else
@@ -35,7 +35,7 @@ pipeline {
     }
             stage('push to kuber') {
                 when {
-                    expression { build == 'true' }
+                    expression { ./build_approve == 'true' }
                 }
                 steps {
                     sh '''
