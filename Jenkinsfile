@@ -40,7 +40,7 @@ pipeline {
                     sh '''
                     tag=$(cat ./tag)
                     echo $tag
-                    sed -i 's/:v.*/:$tag/g' ./kuber_my/deployment_app.yaml
+                    sed -i "s/:v.*/:$tag/g" ./kuber_my/deployment_app.yaml
                     kubectl apply -f ./kuber_my/deployment_app.yaml
                     '''
                     }
