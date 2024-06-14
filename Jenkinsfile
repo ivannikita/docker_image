@@ -36,6 +36,7 @@ pipeline {
                     expression { return fileExists ('./build_approve') }
                 }
                 steps {
+                    git branch: 'main', credentialsId: '6487bf99-5ef7-4876-a3ae-fb89674817c4', url: 'https://github.com/ivannikita/docker_image.git'
                     sh '''
                     tag=$(cat ./tag)
                     echo $tag
