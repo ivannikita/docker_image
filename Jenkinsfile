@@ -11,7 +11,7 @@ pipeline {
                     tag=$(git tag --contains $hash)
                     if [[ ! -z "${tag}" ]]
                     then
-                    echo tag_absolute = true > env.property
+                    touch build
 
                     echo $tag > ./tag
                     else
@@ -35,7 +35,7 @@ pipeline {
     }
             stage('push to kuber') {
                 when {
-                    buildingTag()
+                    expression { build == 'true' }
                 }
                 steps {
                     sh '''
