@@ -35,13 +35,12 @@ pipeline {
             stage('push to kuber') {
                 when {
                    expression {
-                    return TAG_NAME != null;
+                    env.TAG_NAME != null
                     }
                 }
                 steps {
                     sh '''
-                    tag=$(cat ./tag_absolute)
-                    echo $tag
+                    echo ${TAG_NAME}
                     '''
                     }
     }
